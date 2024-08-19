@@ -1,0 +1,7 @@
+/* style.css */
+body {
+    background-image: url("auto_tractor.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
