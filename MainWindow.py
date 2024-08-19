@@ -16,7 +16,7 @@ class Ui_MainWindow(object):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1124, 848)
         MainWindow.setStyleSheet("background-color: rgb(104, 109, 118);\n"
-"border-color: rgb(255, 255, 255);")
+                                 "border-color: rgb(255, 255, 255);")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.frame = QtWidgets.QFrame(self.centralwidget)
@@ -38,9 +38,9 @@ class Ui_MainWindow(object):
         self.label.setFont(font)
         self.label.setAutoFillBackground(False)
         self.label.setStyleSheet("QLabel{\n"
-"        color: white;\n"
-"\n"
-"    }")
+                                 "        color: white;\n"
+                                 "\n"
+                                 "    }")
         self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName("label")
         self.label_8 = QtWidgets.QLabel(self.frame)
@@ -69,19 +69,19 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.pushButton_plot1.setFont(font)
         self.pushButton_plot1.setStyleSheet("QPushButton{\n"
-"    background-color: rgb(7, 25, 82);\n"
-"        border: 1px solid;\n"
-"        border-radius: 15px;\n"
-"        color: white;\n"
-"    }\n"
-"QPushButton:pressed{\n"
-"        background-color: skyblue\n"
-"    }")
+                                            "    background-color: rgb(7, 25, 82);\n"
+                                            "        border: 1px solid;\n"
+                                            "        border-radius: 15px;\n"
+                                            "        color: white;\n"
+                                            "    }\n"
+                                            "QPushButton:pressed{\n"
+                                            "        background-color: skyblue\n"
+                                            "    }")
         self.pushButton_plot1.setObjectName("pushButton_plot1")
         self.label_4 = QtWidgets.QLabel(self.frame_3)
         self.label_4.setGeometry(QtCore.QRect(80, 60, 91, 81))
         self.label_4.setStyleSheet("image: url(:/smartFarming/field.png);\n"
-"background-color: rgb(7, 25, 82);")
+                                   "background-color: rgb(7, 25, 82);")
         self.label_4.setText("")
         self.label_4.setObjectName("label_4")
         self.pushButton_plot1_2 = QtWidgets.QPushButton(self.frame_3)
@@ -93,25 +93,25 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.pushButton_plot1_2.setFont(font)
         self.pushButton_plot1_2.setStyleSheet("QPushButton{\n"
-"    background-color: rgb(7, 25, 82);\n"
-"        border: 1px solid;\n"
-"        border-radius: 15px;\n"
-"        color: white;\n"
-"    }\n"
-"QPushButton:pressed{\n"
-"        background-color: skyblue\n"
-"    }")
+                                              "    background-color: rgb(7, 25, 82);\n"
+                                              "        border: 1px solid;\n"
+                                              "        border-radius: 15px;\n"
+                                              "        color: white;\n"
+                                              "    }\n"
+                                              "QPushButton:pressed{\n"
+                                              "        background-color: skyblue\n"
+                                              "    }")
         self.pushButton_plot1_2.setObjectName("pushButton_plot1_2")
         self.label_9 = QtWidgets.QLabel(self.frame_3)
         self.label_9.setGeometry(QtCore.QRect(70, 240, 91, 81))
         self.label_9.setStyleSheet("image: url(:/smartFarming/field.png);\n"
-"background-color: rgb(7, 25, 82);")
+                                   "background-color: rgb(7, 25, 82);")
         self.label_9.setText("")
         self.label_9.setObjectName("label_9")
         self.frame_4 = QtWidgets.QFrame(self.frame_2)
         self.frame_4.setGeometry(QtCore.QRect(560, 110, 531, 421))
         self.frame_4.setStyleSheet("border-color: rgb(85, 255, 255);\n"
-"border-top-color: rgb(255, 255, 255);")
+                                   "border-top-color: rgb(255, 255, 255);")
         self.frame_4.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_4.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.frame_4.setObjectName("frame_4")
@@ -124,14 +124,14 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.pushButton_plot1_3.setFont(font)
         self.pushButton_plot1_3.setStyleSheet("QPushButton{\n"
-"    background-color: rgb(7, 25, 82);\n"
-"        border: 1px solid;\n"
-"        border-radius: 15px;\n"
-"        color: white;\n"
-"    }\n"
-"QPushButton:pressed{\n"
-"        background-color: skyblue\n"
-"    }")
+                                              "    background-color: rgb(7, 25, 82);\n"
+                                              "        border: 1px solid;\n"
+                                              "        border-radius: 15px;\n"
+                                              "        color: white;\n"
+                                              "    }\n"
+                                              "QPushButton:pressed{\n"
+                                              "        background-color: skyblue\n"
+                                              "    }")
         self.pushButton_plot1_3.setObjectName("pushButton_plot1_3")
         self.pushButton_plot1_4 = QtWidgets.QPushButton(self.frame_4)
         self.pushButton_plot1_4.setGeometry(QtCore.QRect(30, 30, 461, 151))
@@ -142,25 +142,25 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.pushButton_plot1_4.setFont(font)
         self.pushButton_plot1_4.setStyleSheet("QPushButton{\n"
-"    background-color: rgb(7, 25, 82);\n"
-"        border: 1px solid;\n"
-"        border-radius: 15px;\n"
-"        color: white;\n"
-"    }\n"
-"QPushButton:pressed{\n"
-"        background-color: skyblue\n"
-"    }")
+                                              "    background-color: rgb(7, 25, 82);\n"
+                                              "        border: 1px solid;\n"
+                                              "        border-radius: 15px;\n"
+                                              "        color: white;\n"
+                                              "    }\n"
+                                              "QPushButton:pressed{\n"
+                                              "        background-color: skyblue\n"
+                                              "    }")
         self.pushButton_plot1_4.setObjectName("pushButton_plot1_4")
         self.label_10 = QtWidgets.QLabel(self.frame_4)
         self.label_10.setGeometry(QtCore.QRect(70, 240, 91, 81))
         self.label_10.setStyleSheet("image: url(:/smartFarming/field.png);\n"
-"background-color: rgb(7, 25, 82);")
+                                    "background-color: rgb(7, 25, 82);")
         self.label_10.setText("")
         self.label_10.setObjectName("label_10")
         self.label_11 = QtWidgets.QLabel(self.frame_4)
         self.label_11.setGeometry(QtCore.QRect(80, 60, 91, 81))
         self.label_11.setStyleSheet("image: url(:/smartFarming/field.png);\n"
-"background-color: rgb(7, 25, 82);")
+                                    "background-color: rgb(7, 25, 82);")
         self.label_11.setText("")
         self.label_11.setObjectName("label_11")
         self.widget = QtWidgets.QWidget(self.frame_2)
@@ -181,11 +181,11 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.label_2.setFont(font)
         self.label_2.setStyleSheet("QLabel{\n"
-"        color: black;\n"
-"\n"
-"    }\n"
-"\n"
-"image: url(:/blueIcons/blueIcons/target.svg);")
+                                   "        color: black;\n"
+                                   "\n"
+                                   "    }\n"
+                                   "\n"
+                                   "image: url(:/blueIcons/blueIcons/target.svg);")
         self.label_2.setAlignment(QtCore.Qt.AlignCenter)
         self.label_2.setObjectName("label_2")
         self.label_3 = QtWidgets.QLabel(self.frame_5)
@@ -204,6 +204,7 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setFamily("IntelOne Display AR Medium")
         font.setPointSize(18)
+        font.setBold(True)
         self.label_5.setFont(font)
         self.label_5.setObjectName("label_5")
         self.label_6 = QtWidgets.QLabel(self.frame_6)
@@ -253,4 +254,6 @@ class Ui_MainWindow(object):
         self.label_5.setText(_translate("MainWindow", "Weed Treatment"))
         self.label_7.setText(_translate("MainWindow", "Status:"))
         self.label_12.setText(_translate("MainWindow", "Developed by SRINPEK"))
+
+
 import resources_rc
