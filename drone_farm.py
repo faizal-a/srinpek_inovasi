@@ -7,13 +7,20 @@ from inference import get_model
 
 from MainWindow import Ui_MainWindow as Ui
 from PyQt5.QtWidgets import QMainWindow, QApplication
+from inference import InferencePipeline
+from inference.core.interfaces.stream.sinks import render_boxes
+from inference.core.interfaces.camera.entities import VideoFrame
 from ultralytics import YOLO
 from djitellopy import Tello
-
 
 # Define the frame width and height for video capture
 frame_width = 1280
 frame_height = 720
+
+# create a bounding box annotator and label annotator to use in our custom sink
+label_annotator = sv.LabelAnnotator()
+box_annotator = sv.BoxAnnotator()
+
 
 class App(QMainWindow, Ui):
     def __init__(self):
@@ -23,7 +30,22 @@ class App(QMainWindow, Ui):
         self.pushButton_plot1.clicked.connect(self.cropMonitoringDrone)
         self.pushButton_plot1_2.clicked.connect(self.cropMonWebCam)
 
-    def cropMonitoringDrone(self):
+    def custom_sink(predictions: dict, video_frame: VideoFrame):
+        # get the text labels for each prediction
+        labels = [p["class"] for p in predictions["predictions"]]
+        # load our predictions into the Supervision Detections api
+        detections = sv.Detections.from_inference(predictions)
+        # annotate the frame using our supervision annotator, the video_frame, the predictions (as supervision Detections), and the prediction labels
+        image = label_annotator.annotate(
+            scene=video_frame.image.copy(), detections=detections, labels=labels
+        )
+        image = box_annotator.annotate(image, detections=detections)
+        print(labels)
+        # display the annotated image
+        cv2.imshow("Predictions", image)
+        cv2.waitKey(1)
+
+    def cropMonitoringDrone(self, custom_sink):
         # Initialize video capture from default camera
         cap = cv2.VideoCapture(0)
         cap.set(cv2.CAP_PROP_FRAME_WIDTH, frame_width)
@@ -49,37 +71,17 @@ class App(QMainWindow, Ui):
         while True:
             # Read frame from video capture
             # ret, frame = cap.read()
-            img = cap.read()
+            # img = cap.read()
             # img = tello.get_frame_read().frame
 
-            # Perform object detection using YOLOv8
-            result = model.infer(img)
-            detections = sv.Detections.from_inference(result)
-            detections = tracker.update_with_detections(detections)
-
-            labels = [
-                f"#{tracker_id} {result.names[class_id]}"
-                for class_id, tracker_id in zip(
-                    detections.class_id, detections.tracker_id
-                )
-            ]
-
-            print(labels)
-
-            # Annotate frame with bounding boxes and labels
-            annotated_frame = box_annotator.annotate(img.copy(), detections=detections)
-
-            # Display annotated frame
-            cv2.imshow("yolov8", img)
-
-            # Check for quit key
-            if cv2.waitKey(1) & 0xFF == ord("q"):
-                break
-            #
-            #     # Release video capture
-            cap.release()
-            cv2.destroyAllWindows()
-            # cv2.imshow("Tello", img)
+            # initialize a pipeline object
+            pipeline = InferencePipeline.init(
+                model_id="rice-9zz0g/1", api_key='tGs8FbJ5AVs6QQzASbd4',  # Roboflow model to use
+                video_reference=0,  # Path to video, device id (int, usually 0 for built in webcams), or RTSP stream url
+                on_prediction=custom_sink,  # Function to run after each prediction
+            )
+            pipeline.start()
+            pipeline.join()
 
     def cropMonWebCam(self):
         thres = 0.50
