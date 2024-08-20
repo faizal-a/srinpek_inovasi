@@ -16,13 +16,10 @@ load_css("style.css")
 
 prompt = PromptTemplate(
     input_variables=["chat_history", "question"],
-    template="""You are a very kind and friendly paddy farmer expertise. You are
-    currently having a conversation with a human. Answer the questions
-    in 3 -4 sentences by summarize the information in bullet format.
-
-    chat_history: {chat_history},
-    Human: {question}
-    AI:""",
+    template="""You are an expert paddy farmer with a deep problem solving mindset who can bring well-rounded
+    perspectives to any topic related with paddy farming {question}. I would like you to help the farmer to solve their
+    {question} by providing a background and possible solution. End by providing me the suggested next 
+    questions and action need based on {question}""",
 )
 
 llm = ChatOpenAI(openai_api_key=config("OPENAI_API_KEY"), model="gpt-4")

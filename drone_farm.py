@@ -30,26 +30,30 @@ class App(QMainWindow, Ui):
         self.pushButton_plot1.clicked.connect(self.cropMonitoringDrone)
         self.pushButton_plot1_2.clicked.connect(self.cropMonWebCam)
 
-    def custom_sink(predictions: dict, video_frame: VideoFrame):
+    def custom_sink(self, predictions: dict, video_frame: VideoFrame):
         # get the text labels for each prediction
         labels = [p["class"] for p in predictions["predictions"]]
         # load our predictions into the Supervision Detections api
         detections = sv.Detections.from_inference(predictions)
-        # annotate the frame using our supervision annotator, the video_frame, the predictions (as supervision Detections), and the prediction labels
+        # annotate the frame using our supervision annotator, the video_frame, the predictions (as supervision
+        # Detections), and the prediction labels
         image = label_annotator.annotate(
             scene=video_frame.image.copy(), detections=detections, labels=labels
         )
         image = box_annotator.annotate(image, detections=detections)
         print(labels)
+        self.textBrowser.setText("{} were detected. Please take an immediately action". format(labels))
         # display the annotated image
         cv2.imshow("Predictions", image)
         cv2.waitKey(1)
 
+        return labels
+
     def cropMonitoringDrone(self, custom_sink):
         # Initialize video capture from default camera
-        cap = cv2.VideoCapture(0)
-        cap.set(cv2.CAP_PROP_FRAME_WIDTH, frame_width)
-        cap.set(cv2.CAP_PROP_FRAME_HEIGHT, frame_height)
+        # cap = cv2.VideoCapture(0)
+        # cap.set(cv2.CAP_PROP_FRAME_WIDTH, frame_width)
+        # cap.set(cv2.CAP_PROP_FRAME_HEIGHT, frame_height)
 
         # tello = Tello()
         # tello.connect()
@@ -61,11 +65,7 @@ class App(QMainWindow, Ui):
         # model = YOLO("yolov8n.pt")
 
         # load a pre-trained yolov8n model
-        model = get_model(model_id="rice-9zz0g/1", api_key='tGs8FbJ5AVs6QQzASbd4')
-
-        # # Initialize box annotator for visualization
-        tracker = sv.ByteTrack()
-        box_annotator = sv.BoxAnnotator()
+        # model = get_model(model_id="rice-9zz0g/1", api_key='tGs8FbJ5AVs6QQzASbd4')
 
         # Main loop for video processing
         while True:

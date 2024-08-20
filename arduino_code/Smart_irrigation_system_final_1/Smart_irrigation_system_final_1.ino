@@ -80,12 +80,12 @@ void loop() {
 
   // Check current soil moisture sensor value and compare against threshold
   if (soilMoistureValue > soilMoistureThreshold) {
-    Serial.println("The soil is DRY => turn pump ON");
-    digitalWrite(RELAY_PIN, LOW);
+    Serial.println("The soil is DRY");
+    //digitalWrite(RELAY_PIN, LOW);
     delay(200);
   } else {
-    Serial.println("The soil is WET => turn pump OFF");
-    digitalWrite(RELAY_PIN, HIGH);
+    Serial.println("The soil is WET");
+    //digitalWrite(RELAY_PIN, HIGH);
     delay(200);
   }
 
@@ -104,19 +104,19 @@ void loop() {
   }
 
   // Check for float level
-  buttonState = digitalRead(FloatSensor);
-  if (buttonState == LOW) 
-  { 
-    digitalWrite(led, LOW);
-    tone(buzzer, 10000,1000);
-    Serial.println( "WATER LEVEL - LOW"); 
-  } 
-  else 
-  { 
-    digitalWrite(led, HIGH);
-    //tone(buzzer, 10000,500);
-    Serial.println( "WATER LEVEL - HIGH" ); 
-  }
+//   buttonState = digitalRead(FloatSensor);
+//   if (buttonState == LOW)
+//   {
+//     digitalWrite(led, LOW);
+//     tone(buzzer, 10000,1000);
+//     Serial.println( "WATER LEVEL - LOW");
+//   }
+//   else
+//   {
+//     digitalWrite(led, HIGH);
+//     //tone(buzzer, 10000,500);
+//     Serial.println( "WATER LEVEL - HIGH" );
+//   }
 
   // Send data to serial monitor
 //  Serial.print("Soil Moisture: ");
